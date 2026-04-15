@@ -63,8 +63,8 @@ export default function Contact() {
                     </svg>
                   ),
                   label: 'E-mail',
-                  value: 'info@janjacobsbv.be',
-                  href: 'mailto:info@janjacobsbv.be',
+                  value: 'janjacobsschildenwerken@outlook.com',
+                  href: 'mailto:janjacobsschildenwerken@outlook.com',
                 },
                 {
                   icon: (
