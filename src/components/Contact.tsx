@@ -51,8 +51,8 @@ export default function Contact() {
                     </svg>
                   ),
                   label: 'Telefoon',
-                  value: '+32 03 000 00 00',
-                  href: 'tel:+3203000000',
+                  value: '0485 64 78 40',
+                  href: 'tel:+32485647840',
                 },
                 {
                   icon: (
@@ -88,7 +88,7 @@ export default function Contact() {
                     </svg>
                   ),
                   label: 'Openingstijden',
-                  value: 'Ma–Vr: 8:00–18:00',
+                  value: 'Ma–Vr: 8:00–18:00 · Za: 10:00–15:00',
                   href: null,
                 },
               ].map((item) => (
@@ -123,7 +123,7 @@ export default function Contact() {
                     d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                   />
                 </svg>
-                Bel nu: +32 03 000 00 00
+                Bel nu: 0485 64 78 40
               </a>
             </div>
           </div>

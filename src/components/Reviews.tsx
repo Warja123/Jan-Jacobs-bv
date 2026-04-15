@@ -62,7 +62,7 @@ export default function Reviews() {
           </div>
           <h2 className="section-title">Wat klanten zeggen</h2>
           <p className="section-subtitle">
-            Meer dan 500 tevreden klanten in Antwerpen en omgeving.
+            30 Google beoordelingen met een perfecte score van 5/5.
             Lees wat ze over ons zeggen.
           </p>
 
@@ -72,7 +72,7 @@ export default function Reviews() {
               {[...Array(5)].map((_, i) => <StarIcon key={i} />)}
             </div>
             <span className="text-white font-bold text-xl">5.0</span>
-            <span className="text-gray-400 text-sm">· 127 beoordelingen</span>
+            <span className="text-gray-400 text-sm">· 30 beoordelingen op Google</span>
           </div>
         </div>
 
@@ -117,7 +117,7 @@ export default function Reviews() {
             </svg>
             <div className="text-left">
               <div className="text-white text-sm font-semibold">Google Reviews</div>
-              <div className="text-gray-400 text-xs">Gemiddeld 5.0 ★ · Geverifieerde beoordelingen</div>
+              <div className="text-gray-400 text-xs">5.0 ★ · 30 geverifieerde beoordelingen</div>
             </div>
           </div>
         </div>

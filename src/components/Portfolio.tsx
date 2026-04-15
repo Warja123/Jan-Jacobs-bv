@@ -1,4 +1,31 @@
-const projects = [
+type Project = {
+  title: string
+  category: string
+  tags: string[]
+  image?: string
+  color?: string
+  accent?: string
+}
+
+const projects: Project[] = [
+  {
+    title: 'Decoratieve living – Antwerpen',
+    category: 'Binnenschilderwerk',
+    image: '/images/project1.png',
+    tags: ['Binnenschilderwerk', 'Decoratief'],
+  },
+  {
+    title: 'Gevelrenovatie woning',
+    category: 'Buitenschilderwerk',
+    image: '/images/project2.png',
+    tags: ['Gevel', 'Renovatie'],
+  },
+  {
+    title: 'Kozijnen & deuren – schrijnwerk',
+    category: 'Houtwerk & schrijnwerk',
+    image: '/images/project3.png',
+    tags: ['Schrijnwerk', 'Buiten'],
+  },
   {
     title: 'Villa renovatie – Berchem',
     category: 'Binnen & buiten',
@@ -7,18 +34,11 @@ const projects = [
     tags: ['Binnenschilderwerk', 'Gevel'],
   },
   {
-    title: 'Kantoorgebouw – Stad Antwerpen',
+    title: 'Kantoorgebouw – Antwerpen',
     category: 'Bedrijfsschilderwerk',
-    color: 'from-navy-700 to-navy-900',
+    color: 'from-blue-900 to-navy-900',
     accent: '#60a5fa',
     tags: ['Bedrijf', 'Groot project'],
-  },
-  {
-    title: 'Herenwoning – Zurenborg',
-    category: 'Decoratieve afwerking',
-    color: 'from-stone-700 to-stone-900',
-    accent: '#d4a574',
-    tags: ['Venetiaanse stucco', 'Interieur'],
   },
   {
     title: 'Appartementencomplex – Linkeroever',
@@ -26,20 +46,6 @@ const projects = [
     color: 'from-zinc-700 to-zinc-900',
     accent: '#a3a3a3',
     tags: ['Gevel', 'Renovatie'],
-  },
-  {
-    title: "Moderne loft - 't Zuid",
-    category: 'Betonlook afwerking',
-    color: 'from-gray-700 to-gray-900',
-    accent: '#9ca3af',
-    tags: ['Betonlook', 'Modern'],
-  },
-  {
-    title: 'Vakantiewoning – Schoten',
-    category: 'Volledig project',
-    color: 'from-emerald-900 to-slate-900',
-    accent: '#34d399',
-    tags: ['Binnen', 'Buiten'],
   },
 ]
 
@@ -66,51 +72,65 @@ export default function Portfolio() {
               key={i}
               className="portfolio-item rounded-2xl overflow-hidden border border-white/5 hover:border-white/15 transition-all duration-300 group cursor-pointer"
             >
-              {/* Image placeholder with gradient */}
-              <div className={`h-56 bg-gradient-to-br ${project.color} relative flex items-end p-5`}>
-                {/* Decorative brush stroke SVG */}
-                <div className="absolute inset-0 opacity-20">
-                  <svg className="w-full h-full" viewBox="0 0 300 220" preserveAspectRatio="none">
-                    <path
-                      d={`M0,${80 + i * 10} Q${75 + i * 15},${20 + i * 8} 150,${60 + i * 12} T300,${40 + i * 10}`}
-                      fill="none"
-                      stroke={project.accent}
-                      strokeWidth="40"
-                      strokeLinecap="round"
-                      opacity="0.4"
+              {/* Image or gradient placeholder */}
+              <div className="h-56 relative overflow-hidden">
+                {project.image ? (
+                  <>
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    <path
-                      d={`M0,${150 + i * 5} Q${100 + i * 10},${110 + i * 8} 200,${140 + i * 6} T300,${130}`}
-                      fill="none"
-                      stroke={project.accent}
-                      strokeWidth="25"
-                      strokeLinecap="round"
-                      opacity="0.25"
-                    />
-                  </svg>
-                </div>
-
-                {/* Paint roller icon */}
-                <div className="absolute top-4 right-4 opacity-30">
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1">
-                    <rect x="2" y="3" width="14" height="7" rx="2"/>
-                    <path d="M15 6.5h2a2 2 0 010 4H15"/>
-                    <path d="M12 10v8"/>
-                    <path d="M10 18h4"/>
-                  </svg>
-                </div>
-
-                {/* Tags */}
-                <div className="relative flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-xs bg-black/30 backdrop-blur-sm text-white/80 px-2.5 py-1 rounded-full"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+                    {/* Gradient overlay + tags */}
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
+                      <div className="flex flex-wrap gap-2">
+                        {project.tags.map((tag) => (
+                          <span key={tag} className="text-xs bg-black/40 backdrop-blur-sm text-white/90 px-2.5 py-1 rounded-full">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <div className={`w-full h-full bg-gradient-to-br ${project.color} relative flex items-end p-5`}>
+                    <div className="absolute inset-0 opacity-20">
+                      <svg className="w-full h-full" viewBox="0 0 300 220" preserveAspectRatio="none">
+                        <path
+                          d={`M0,${80 + i * 10} Q${75 + i * 15},${20 + i * 8} 150,${60 + i * 12} T300,${40 + i * 10}`}
+                          fill="none"
+                          stroke={project.accent}
+                          strokeWidth="40"
+                          strokeLinecap="round"
+                          opacity="0.4"
+                        />
+                        <path
+                          d={`M0,${150 + i * 5} Q${100 + i * 10},${110 + i * 8} 200,${140 + i * 6} T300,${130}`}
+                          fill="none"
+                          stroke={project.accent}
+                          strokeWidth="25"
+                          strokeLinecap="round"
+                          opacity="0.25"
+                        />
+                      </svg>
+                    </div>
+                    <div className="absolute top-4 right-4 opacity-30">
+                      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1">
+                        <rect x="2" y="3" width="14" height="7" rx="2"/>
+                        <path d="M15 6.5h2a2 2 0 010 4H15"/>
+                        <path d="M12 10v8"/>
+                        <path d="M10 18h4"/>
+                      </svg>
+                    </div>
+                    <div className="relative flex flex-wrap gap-2">
+                      {project.tags.map((tag) => (
+                        <span key={tag} className="text-xs bg-black/30 backdrop-blur-sm text-white/80 px-2.5 py-1 rounded-full">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* Info */}
