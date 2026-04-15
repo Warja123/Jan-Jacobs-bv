@@ -5,19 +5,19 @@ export default function PhotoStrip() {
         <div className="grid md:grid-cols-3 gap-5">
           {[
             {
-              src: '/images/project1.png',
-              title: 'Decoratieve wand met bloemenmotief',
-              sub: 'Living – Antwerpen',
+              src: '/images/project7.png',
+              title: 'Kinderkamer blauw met witte strepen',
+              sub: 'Binnenschilderwerk – Antwerpen',
             },
             {
-              src: '/images/project2.png',
-              title: 'Gevelrenovatie in wit',
-              sub: 'Woonhuis – omgeving Antwerpen',
+              src: '/images/project4.png',
+              title: 'Gevel wit met zwarte raamkaders',
+              sub: 'Buitenschilderwerk – omgeving Antwerpen',
             },
             {
-              src: '/images/project3.png',
-              title: 'Kozijnen & deuren gespoten',
-              sub: 'Schrijnwerk – omgeving Antwerpen',
+              src: '/images/project12.png',
+              title: 'Kleuraccent in bordeauxrood',
+              sub: 'Binnenschilderwerk – Antwerpen',
             },
           ].map((photo) => (
             <div key={photo.src} className="group relative rounded-2xl overflow-hidden border border-white/5 hover:border-amber-500/30 transition-all duration-300">

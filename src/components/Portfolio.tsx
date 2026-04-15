@@ -1,51 +1,75 @@
-type Project = {
-  title: string
-  category: string
-  tags: string[]
-  image?: string
-  color?: string
-  accent?: string
-}
-
-const projects: Project[] = [
+const projects = [
   {
-    title: 'Decoratieve living – Antwerpen',
-    category: 'Binnenschilderwerk',
     image: '/images/project1.png',
-    tags: ['Binnenschilderwerk', 'Decoratief'],
+    title: 'Decoratieve living met bloemmotief',
+    category: 'Binnenschilderwerk',
+    tags: ['Decoratief', 'Living'],
   },
   {
-    title: 'Gevelrenovatie woning',
-    category: 'Buitenschilderwerk',
     image: '/images/project2.png',
+    title: 'Gevelrenovatie woning in wit',
+    category: 'Buitenschilderwerk',
     tags: ['Gevel', 'Renovatie'],
   },
   {
-    title: 'Kozijnen & deuren – schrijnwerk',
-    category: 'Houtwerk & schrijnwerk',
     image: '/images/project3.png',
+    title: 'Kozijnen & deuren gespoten grijs',
+    category: 'Schrijnwerk',
     tags: ['Schrijnwerk', 'Buiten'],
   },
   {
-    title: 'Villa renovatie – Berchem',
-    category: 'Binnen & buiten',
-    color: 'from-slate-700 to-slate-900',
-    accent: '#94a3b8',
-    tags: ['Binnenschilderwerk', 'Gevel'],
-  },
-  {
-    title: 'Kantoorgebouw – Antwerpen',
-    category: 'Bedrijfsschilderwerk',
-    color: 'from-blue-900 to-navy-900',
-    accent: '#60a5fa',
-    tags: ['Bedrijf', 'Groot project'],
-  },
-  {
-    title: 'Appartementencomplex – Linkeroever',
+    image: '/images/project4.png',
+    title: 'Gevel wit geschilderd met zwarte accenten',
     category: 'Buitenschilderwerk',
-    color: 'from-zinc-700 to-zinc-900',
-    accent: '#a3a3a3',
-    tags: ['Gevel', 'Renovatie'],
+    tags: ['Gevel', 'Modern'],
+  },
+  {
+    image: '/images/project5.png',
+    title: 'Badkamer – petrolblauw accent',
+    category: 'Binnenschilderwerk',
+    tags: ['Badkamer', 'Kleuraccent'],
+  },
+  {
+    image: '/images/project6.png',
+    title: 'Wand ecru – strak en minimalistisch',
+    category: 'Binnenschilderwerk',
+    tags: ['Wand', 'Minimalistisch'],
+  },
+  {
+    image: '/images/project7.png',
+    title: 'Kinderkamer blauw met witte strepen',
+    category: 'Binnenschilderwerk',
+    tags: ['Kinderkamer', 'Decoratief'],
+  },
+  {
+    image: '/images/project8.png',
+    title: 'Haardwand in olijfgroen',
+    category: 'Binnenschilderwerk',
+    tags: ['Kleuraccent', 'Living'],
+  },
+  {
+    image: '/images/project9.png',
+    title: 'Gang & traphal volledig opgefrist',
+    category: 'Renovatieschilderwerk',
+    tags: ['Gang', 'Renovatie'],
+  },
+  {
+    image: '/images/project10.png',
+    title: 'Toilet in mat zwart',
+    category: 'Binnenschilderwerk',
+    tags: ['Toilet', 'Donkere tint'],
+  },
+  {
+    image: '/images/project11.png',
+    title: 'Badkamer – grijsblauwe wand',
+    category: 'Binnenschilderwerk',
+    tags: ['Badkamer', 'Kleuraccent'],
+  },
+  {
+    image: '/images/project12.png',
+    title: 'Kleuraccent muur in bordeauxrood',
+    category: 'Binnenschilderwerk',
+    tags: ['Kleuraccent', 'Living'],
   },
 ]
 
@@ -70,75 +94,30 @@ export default function Portfolio() {
           {projects.map((project, i) => (
             <div
               key={i}
-              className="portfolio-item rounded-2xl overflow-hidden border border-white/5 hover:border-white/15 transition-all duration-300 group cursor-pointer"
+              className="rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all duration-300 group cursor-pointer"
             >
-              {/* Image or gradient placeholder */}
               <div className="h-56 relative overflow-hidden">
-                {project.image ? (
-                  <>
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    {/* Gradient overlay + tags */}
-                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
-                      <div className="flex flex-wrap gap-2">
-                        {project.tags.map((tag) => (
-                          <span key={tag} className="text-xs bg-black/40 backdrop-blur-sm text-white/90 px-2.5 py-1 rounded-full">
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </>
-                ) : (
-                  <div className={`w-full h-full bg-gradient-to-br ${project.color} relative flex items-end p-5`}>
-                    <div className="absolute inset-0 opacity-20">
-                      <svg className="w-full h-full" viewBox="0 0 300 220" preserveAspectRatio="none">
-                        <path
-                          d={`M0,${80 + i * 10} Q${75 + i * 15},${20 + i * 8} 150,${60 + i * 12} T300,${40 + i * 10}`}
-                          fill="none"
-                          stroke={project.accent}
-                          strokeWidth="40"
-                          strokeLinecap="round"
-                          opacity="0.4"
-                        />
-                        <path
-                          d={`M0,${150 + i * 5} Q${100 + i * 10},${110 + i * 8} 200,${140 + i * 6} T300,${130}`}
-                          fill="none"
-                          stroke={project.accent}
-                          strokeWidth="25"
-                          strokeLinecap="round"
-                          opacity="0.25"
-                        />
-                      </svg>
-                    </div>
-                    <div className="absolute top-4 right-4 opacity-30">
-                      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1">
-                        <rect x="2" y="3" width="14" height="7" rx="2"/>
-                        <path d="M15 6.5h2a2 2 0 010 4H15"/>
-                        <path d="M12 10v8"/>
-                        <path d="M10 18h4"/>
-                      </svg>
-                    </div>
-                    <div className="relative flex flex-wrap gap-2">
-                      {project.tags.map((tag) => (
-                        <span key={tag} className="text-xs bg-black/30 backdrop-blur-sm text-white/80 px-2.5 py-1 rounded-full">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <div className="flex flex-wrap gap-1.5">
+                    {project.tags.map((tag) => (
+                      <span key={tag} className="text-xs bg-black/40 backdrop-blur-sm text-white/90 px-2.5 py-1 rounded-full">
+                        {tag}
+                      </span>
+                    ))}
                   </div>
-                )}
+                </div>
               </div>
-
-              {/* Info */}
               <div className="bg-navy-800/60 p-5">
                 <div className="text-amber-400 text-xs font-medium uppercase tracking-wider mb-1">
                   {project.category}
                 </div>
-                <h3 className="text-white font-semibold group-hover:text-amber-300 transition-colors">
+                <h3 className="text-white font-semibold group-hover:text-amber-300 transition-colors text-sm">
                   {project.title}
                 </h3>
               </div>
