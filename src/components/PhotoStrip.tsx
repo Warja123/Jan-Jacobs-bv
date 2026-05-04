@@ -39,7 +39,7 @@ export default function PhotoStrip() {
         <div className="mt-10 flex flex-wrap items-center justify-center gap-8 py-6 border-t border-white/5">
           {[
             { icon: '⭐', text: '5.0 op Google · 30 beoordelingen' },
-            { icon: '🛡️', text: '2 jaar garantie op elk project' },
+            { icon: '🖌️', text: 'Vakkundig schilderwerk & decoratie' },
             { icon: '📋', text: 'Gratis offerte & plaatsbezoek' },
             { icon: '✅', text: 'Erkend vakman · BTW-plichtig' },
           ].map((item) => (

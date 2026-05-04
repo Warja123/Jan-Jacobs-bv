@@ -99,7 +99,7 @@ export default function WhyUs() {
                 { label: 'Gratis plaatsbezoek', icon: '📍' },
                 { label: 'Gratis offerte', icon: '📋' },
                 { label: 'Eigen vaste ploeg', icon: '👷' },
-                { label: '2 jaar garantie', icon: '✅' },
+                { label: 'Nette afwerking', icon: '✨' },
               ].map((item) => (
                 <div key={item.label} className="flex items-center gap-3 bg-navy-800/50 border border-white/5 rounded-xl p-4">
                   <span className="text-xl">{item.icon}</span>

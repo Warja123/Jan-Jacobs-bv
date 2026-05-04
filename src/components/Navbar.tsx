@@ -28,14 +28,12 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-3 group">
-          <div className="w-9 h-9 bg-amber-500 rounded-lg flex items-center justify-center font-bold text-navy-950 text-sm group-hover:bg-amber-400 transition-colors">
-            JJ
-          </div>
-          <div>
-            <div className="font-bold text-white leading-tight text-sm">Jan Jacobs BV</div>
-            <div className="text-amber-400/80 text-xs leading-tight">Schilderwerken Antwerpen</div>
-          </div>
+        <a href="#" className="flex items-center">
+          <img
+            src="/images/logo.png"
+            alt="Jan Jacobs – Schilder & Decoratie"
+            className={`transition-all duration-300 object-contain ${scrolled ? 'h-11' : 'h-14'}`}
+          />
         </a>
 
         {/* Desktop nav */}

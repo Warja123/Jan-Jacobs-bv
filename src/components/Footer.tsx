@@ -7,31 +7,17 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
           <div className="md:col-span-2">
-            <div className="flex items-center gap-3 mb-5">
-              <div className="w-10 h-10 bg-amber-500 rounded-lg flex items-center justify-center font-bold text-navy-950">
-                JJ
-              </div>
-              <div>
-                <div className="font-bold text-white">Jan Jacobs BV</div>
-                <div className="text-amber-400/70 text-xs">Schilderwerken Antwerpen</div>
-              </div>
-            </div>
-            <p className="text-gray-500 text-sm leading-relaxed max-w-xs mb-6">
+            <a href="#" className="inline-block mb-5">
+              <img
+                src="/images/logo.png"
+                alt="Jan Jacobs – Schilder & Decoratie"
+                className="h-16 object-contain brightness-0 invert"
+              />
+            </a>
+            <p className="text-gray-500 text-sm leading-relaxed max-w-xs">
               Professionele schilderwerken in Antwerpen en omgeving.
               Meer dan 15 jaar ervaring. Kwaliteit, precisie en betrouwbaarheid.
             </p>
-            {/* Social / ratings */}
-            <div className="flex gap-3">
-              {['Google', 'Facebook'].map((platform) => (
-                <a
-                  key={platform}
-                  href="#"
-                  className="text-xs bg-navy-800 border border-white/10 hover:border-amber-500/30 text-gray-400 hover:text-amber-400 px-4 py-2 rounded-lg transition-all duration-300"
-                >
-                  {platform}
-                </a>
-              ))}
-            </div>
           </div>
 
           {/* Links */}

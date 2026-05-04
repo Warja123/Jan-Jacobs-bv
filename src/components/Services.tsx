@@ -32,8 +32,8 @@ const services = [
       </svg>
     ),
     title: 'Decoratieve afwerkingen',
-    desc: 'Unieke technieken voor een stijlvol interieur. Van betonlook tot Venetiaanse stucco – wij brengen karakter in elke ruimte.',
-    features: ['Venetiaanse stucco', 'Betonlook afwerking', 'Structuurverf'],
+    desc: 'Unieke verftechnieken voor een stijlvol interieur. Wij brengen karakter en sfeer in elke ruimte met verschillende decoratieve methodes.',
+    features: ['Verschillende verftechnieken (kaleien, patineren, sjabloneren)', 'Betonlook afwerking', 'Structuurverf'],
   },
   {
     icon: (
