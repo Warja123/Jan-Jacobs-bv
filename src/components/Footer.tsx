@@ -11,7 +11,8 @@ export default function Footer() {
               <img
                 src="/images/logo.png"
                 alt="Jan Jacobs – Schilder & Decoratie"
-                className="h-16 object-contain brightness-0 invert"
+                className="h-16 object-contain"
+                style={{ mixBlendMode: 'screen' }}
               />
             </a>
             <p className="text-gray-500 text-sm leading-relaxed max-w-xs">
@@ -94,7 +95,8 @@ export default function Footer() {
             <img
               src="/images/logo.png"
               alt="Jan Jacobs – Schilder & Decoratie"
-              className="h-8 object-contain brightness-0 invert opacity-50"
+              className="h-8 object-contain opacity-70"
+              style={{ mixBlendMode: 'screen' }}
             />
             <div className="text-gray-600 text-xs">
               © {currentYear} Jan Jacobs BV — BTW BE 0000.000.000 — Alle rechten voorbehouden
