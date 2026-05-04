@@ -90,8 +90,15 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="text-gray-600 text-xs">
-            © {currentYear} Jan Jacobs BV — BTW BE 0000.000.000 — Alle rechten voorbehouden
+          <div className="flex items-center gap-4">
+            <img
+              src="/images/logo.png"
+              alt="Jan Jacobs – Schilder & Decoratie"
+              className="h-8 object-contain brightness-0 invert opacity-50"
+            />
+            <div className="text-gray-600 text-xs">
+              © {currentYear} Jan Jacobs BV — BTW BE 0000.000.000 — Alle rechten voorbehouden
+            </div>
           </div>
           <div className="flex gap-6">
             <a href="#" className="text-gray-600 hover:text-gray-400 text-xs transition-colors">
