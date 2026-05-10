@@ -99,7 +99,7 @@ export default function Footer() {
               style={{ mixBlendMode: 'screen' }}
             />
             <div className="text-gray-600 text-xs">
-              © {currentYear} Jan Jacobs BV — BTW BE 0000.000.000 — Alle rechten voorbehouden
+              © {currentYear} Jan Jacobs BV — BTW BE 0759501486 — Alle rechten voorbehouden
             </div>
           </div>
           <div className="flex gap-6">

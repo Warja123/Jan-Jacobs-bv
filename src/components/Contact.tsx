@@ -9,29 +9,55 @@ export default function Contact() {
     bericht: '',
   })
   const [submitted, setSubmitted] = useState(false)
+  const [error, setError] = useState(false)
+  const [sending, setSending] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSubmitted(true)
+    setSending(true)
+    setError(false)
+
+    const body = new URLSearchParams({
+      'form-name': 'offerte',
+      ...formData,
+    }).toString()
+
+    try {
+      const res = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body,
+      })
+      if (res.ok) {
+        setSubmitted(true)
+      } else {
+        setError(true)
+      }
+    } catch {
+      setError(true)
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
-    <section id="contact" className="py-24 px-6 bg-navy-950">
+    <section id="contact" className="py-24 px-6" style={{ backgroundColor: '#0a0a0a' }}>
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
 
           {/* Left: info */}
           <div>
-            <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 text-amber-400 text-sm font-medium px-4 py-2 rounded-full mb-6">
+            <div className="inline-flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-full mb-6"
+              style={{ backgroundColor: 'rgba(141,198,63,0.1)', border: '1px solid rgba(141,198,63,0.2)', color: '#8dc63f' }}>
               Contacteer ons
             </div>
             <h2 className="text-4xl font-bold text-white mb-6 leading-tight">
               Klaar voor een{' '}
-              <span className="text-amber-400">gratis offerte</span>?
+              <span style={{ color: '#8dc63f' }}>gratis offerte</span>?
             </h2>
             <p className="text-gray-300 leading-relaxed mb-10">
               Neem contact met ons op voor een vrijblijvende offerte.
@@ -93,13 +119,15 @@ export default function Contact() {
                 },
               ].map((item) => (
                 <div key={item.label} className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-amber-500/10 border border-amber-500/20 rounded-xl flex items-center justify-center text-amber-400 flex-shrink-0 mt-0.5">
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5"
+                    style={{ backgroundColor: 'rgba(141,198,63,0.1)', border: '1px solid rgba(141,198,63,0.2)', color: '#8dc63f' }}>
                     {item.icon}
                   </div>
                   <div>
                     <div className="text-gray-500 text-xs mb-0.5">{item.label}</div>
                     {item.href ? (
-                      <a href={item.href} className="text-white font-medium hover:text-amber-400 transition-colors">
+                      <a href={item.href} className="text-white font-medium transition-colors hover:text-lime-400"
+                        style={{ '--tw-text-opacity': '1' } as React.CSSProperties}>
                         {item.value}
                       </a>
                     ) : (
@@ -111,12 +139,14 @@ export default function Contact() {
             </div>
 
             {/* Emergency CTA */}
-            <div className="mt-10 p-5 bg-amber-500/10 border border-amber-500/20 rounded-2xl">
-              <div className="text-amber-400 font-semibold mb-1">Dringende klus?</div>
+            <div className="mt-10 p-5 rounded-2xl"
+              style={{ backgroundColor: 'rgba(141,198,63,0.08)', border: '1px solid rgba(141,198,63,0.2)' }}>
+              <div className="font-semibold mb-1" style={{ color: '#8dc63f' }}>Dringende klus?</div>
               <p className="text-gray-400 text-sm mb-4">Bel ons direct voor snelle opvolging.</p>
               <a
-                href="tel:+3203000000"
-                className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-navy-950 font-semibold px-6 py-3 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-amber-500/30"
+                href="tel:+32485647840"
+                className="inline-flex items-center gap-2 font-semibold px-6 py-3 rounded-xl transition-all duration-300"
+                style={{ backgroundColor: '#8dc63f', color: '#0a0a0a' }}
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
@@ -129,22 +159,27 @@ export default function Contact() {
           </div>
 
           {/* Right: form */}
-          <div className="bg-navy-800/50 border border-white/5 rounded-3xl p-8">
+          <div className="rounded-3xl p-8" style={{ backgroundColor: 'rgba(26,26,26,0.8)', border: '1px solid rgba(255,255,255,0.05)' }}>
             {submitted ? (
               <div className="text-center py-12">
-                <div className="w-16 h-16 bg-green-500/20 border border-green-500/30 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <svg className="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"
+                  style={{ backgroundColor: 'rgba(141,198,63,0.15)', border: '1px solid rgba(141,198,63,0.3)' }}>
+                  <svg className="w-8 h-8" style={{ color: '#8dc63f' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-3">Aanvraag ontvangen!</h3>
+                <h3 className="text-2xl font-bold text-white mb-3">Aanvraag verstuurd!</h3>
                 <p className="text-gray-400">
-                  Bedankt voor uw bericht. We nemen zo snel mogelijk contact met u op,
-                  gewoonlijk binnen de 24 uur.
+                  Bedankt voor uw bericht. De eigenaar ontvangt uw aanvraag per e-mail
+                  en neemt zo snel mogelijk contact met u op.
                 </p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
+                {/* Honeypot anti-spam */}
+                <input type="hidden" name="form-name" value="offerte" />
+                <p hidden><input name="bot-field" /></p>
+
                 <div>
                   <label className="block text-sm text-gray-400 mb-2">Naam *</label>
                   <input
@@ -192,14 +227,14 @@ export default function Contact() {
                     onChange={handleChange}
                     className="form-input"
                   >
-                    <option value="" className="bg-navy-900">Kies een dienst...</option>
-                    <option value="binnen" className="bg-navy-900">Binnenschilderwerk</option>
-                    <option value="buiten" className="bg-navy-900">Buitenschilderwerk</option>
-                    <option value="decoratief" className="bg-navy-900">Decoratieve afwerking</option>
-                    <option value="renovatie" className="bg-navy-900">Renovatieschilderwerk</option>
-                    <option value="vastgoed" className="bg-navy-900">Vastgoedoplevering</option>
-                    <option value="bedrijf" className="bg-navy-900">Bedrijfsschilderwerk</option>
-                    <option value="anders" className="bg-navy-900">Anders / meerdere diensten</option>
+                    <option value="">Kies een dienst...</option>
+                    <option value="binnen">Binnenschilderwerk</option>
+                    <option value="buiten">Buitenschilderwerk</option>
+                    <option value="decoratief">Decoratieve afwerking</option>
+                    <option value="renovatie">Renovatieschilderwerk</option>
+                    <option value="vastgoed">Vastgoedoplevering</option>
+                    <option value="bedrijf">Bedrijfsschilderwerk</option>
+                    <option value="anders">Anders / meerdere diensten</option>
                   </select>
                 </div>
 
@@ -216,11 +251,19 @@ export default function Contact() {
                   />
                 </div>
 
+                {error && (
+                  <p className="text-red-400 text-sm text-center">
+                    Er ging iets mis. Probeer opnieuw of bel ons direct.
+                  </p>
+                )}
+
                 <button
                   type="submit"
-                  className="w-full btn-primary text-center text-base"
+                  disabled={sending}
+                  className="w-full text-center text-base font-semibold py-4 rounded-xl transition-all duration-300"
+                  style={{ backgroundColor: sending ? '#72a830' : '#8dc63f', color: '#0a0a0a', opacity: sending ? 0.8 : 1 }}
                 >
-                  Verstuur aanvraag
+                  {sending ? 'Bezig met versturen...' : 'Verstuur aanvraag'}
                 </button>
 
                 <p className="text-gray-600 text-xs text-center">
